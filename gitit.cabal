@@ -127,6 +127,9 @@ Library
                      Network.Gitit.Plugins, Network.Gitit.Rpxnow,
                      Network.Gitit.Page, Network.Gitit.Feed,
                      Network.Gitit.Compat.Except,
+                     Network.Gitit.Plugins.Dot,
+                     Network.Gitit.Plugins.PlantUML,
+                     Network.Gitit.Plugins.Signature,
                      Paths_gitit
   build-depends:     base >= 4.9 && < 5,
                      syb,

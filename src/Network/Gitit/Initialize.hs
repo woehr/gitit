@@ -65,7 +65,7 @@ initializeGititState conf = do
                              , users         = users'
                              , templatesPath = templatesDir conf
                              , renderPage    = defaultRenderPage templ
-                             , plugins       = plugins' }
+                             , plugins       = plugins' ++ compiledPlugins }
 
 -- | Recompile the page template.
 recompilePageTemplate :: IO ()

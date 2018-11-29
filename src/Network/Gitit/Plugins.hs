@@ -20,14 +20,19 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 {- Functions for loading plugins.
 -}
 
-module Network.Gitit.Plugins ( loadPlugin, loadPlugins )
+module Network.Gitit.Plugins (compiledPlugins, loadPlugin, loadPlugins )
 where
+
+import Network.Gitit.Plugins.Dot as Dot
+import Network.Gitit.Plugins.PlantUML as PlantUML
+import Network.Gitit.Plugins.Signature as Signature
+
 import Network.Gitit.Types
-import System.FilePath (takeBaseName)
 import Control.Monad (unless)
 import System.Log.Logger (logM, Priority(..))
 #ifdef _PLUGINS
 import Data.List (isInfixOf, isPrefixOf)
+import System.FilePath (takeBaseName)
 import GHC
 import GHC.Paths
 import Unsafe.Coerce
@@ -77,3 +82,9 @@ loadPlugins pluginNames = do
   unless (null pluginNames) $ logM "gitit" WARNING "Finished loading plugins."
   return plugins'
 
+compiledPlugins :: [Plugin]
+compiledPlugins =
+  [ Dot.plugin
+  , PlantUML.plugin
+  , Signature.plugin
+  ]
